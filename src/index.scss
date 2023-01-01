@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding-top: 4rem;
+}
+
+// $primary: #f79400;
+$primary: #9100f1;
+
+@import "~bootstrap/scss/bootstrap";
+
+.actions {
+  opacity: 0;
+}
+
+.contact:hover .actions {
+  opacity: 1;
+}
+
+.contact:hover {
+  cursor: pointer;
+  background: rgba($primary, 0.1);
+}
+
+.contact {
+  vertical-align: middle;
+}
