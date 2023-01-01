@@ -1,11 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { delContact } from "../../actions";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Avatar from "react-avatar";
 
 export default function ViewContact() {
   const params = useParams();
-  const contacts = useSelector((state) => state.ContactReducer.contacts);
+  const contacts = useSelector((state) => state.contactReducer.contacts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const contact = contacts?.filter((contact) => contact.id === params.id)[0];
@@ -36,7 +35,7 @@ export default function ViewContact() {
             <button
               className="btn btn-outline-primary float-start m-2"
               onClick={() => {
-                dispatch(delContact(contact.id));
+                dispatch({type: "delete", payload: contact.id});
                 navigate(-1);
               }}
             >

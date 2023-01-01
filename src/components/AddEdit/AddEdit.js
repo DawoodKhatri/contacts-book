@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addContact, editContact } from "../../actions";
 import shortid from "shortid";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Avatar from "react-avatar";
 
 export default function AddEdit() {
-  const contacts = useSelector((state) => state.ContactReducer.contacts);
+  const contacts = useSelector((state) => state.contactReducer.contacts);
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
@@ -96,9 +95,9 @@ export default function AddEdit() {
             className="btn btn-primary text-light m-2"
             onClick={(e) => {
               if (location === "/new") {
-                dispatch(addContact({ id: generateId(), ...contact }));
+                dispatch({type: "add", payload: { id: generateId(), ...contact }});
               } else {
-                dispatch(editContact(contact));
+                dispatch({type: "edit", payload: contact});
               }
               navigate(-1);
               setContact({

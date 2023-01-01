@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 
 export default function Contacts() {
   const contacts = useSelector((state) =>
-    state.ContactReducer.search
-      ? state.ContactReducer.search
-      : state.ContactReducer.contacts
+    state.contactReducer.search
+      ? state.contactReducer.search
+      : state.contactReducer.contacts
   );
-  const search = useSelector((state) => state.ContactReducer.search);
+  const search = useSelector((state) => state.contactReducer.search);
   const navigate = useNavigate();
   const [mobile, setMobile] = useState();
   useEffect(() => {

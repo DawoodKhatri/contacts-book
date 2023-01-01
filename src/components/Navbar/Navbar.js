@@ -1,6 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { resetSearch, searchcontact } from "../../actions";
 import { useEffect } from "react";
 
 export default function Navbar() {
@@ -8,7 +7,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(resetSearch());
+    dispatch({ type: "search" });
   }, []);
   return (
     <>
@@ -25,8 +24,8 @@ export default function Navbar() {
               placeholder="Search"
               onChange={(e) => {
                 e.target.value !== ""
-                  ? dispatch(searchcontact(e.target.value))
-                  : dispatch(resetSearch());
+                  ? dispatch({ type: "search", payload: e.target.value })
+                  : dispatch({ type: "search" });
               }}
             />
           ) : (
